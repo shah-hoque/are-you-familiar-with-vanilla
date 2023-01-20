@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Coding Quiz</title>
 
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
 
@@ -16,14 +21,21 @@
 
     <div class="wrapper">
       <div id="start-screen" class="start">
-        <h1>Coding Quiz Challenge</h1>
-        <p>
-          Try to answer the following code-related questions within the time
-          limit. Keep in mind that incorrect answers will penalize your
-          score/time by ten seconds!
-        </p>
-        <button id="start">Start Quiz</button>
+
+          <h1 id="title">Are You Familiar With <span id="title-span-h1">Vanilla?</span></h1>
+
+          <h3><span id="sub-title-span-h3">The order of the century</span></h3>
+          <p>
+            Did you say yes? Perhaps you're the brave warrior who can fight these 10 JavaScript questions in 1 minute!
+          </p>
+          <h3><span id="sub-title-span-h3">One rule</span></h3>
+          <p>
+            10 seconds will be deducted if you answer wrong
+          </p>
+          
+          <button id="start">Let me go forth</button>
       </div>
+
 
       <div id="questions" class="hide">
         <h2 id="question-title"></h2>
