@@ -3,6 +3,7 @@ body {
   font-family: 'Do Hyeon', sans-serif;
   font-size: 120%;
   background-color: #000000;
+  background-repeat: no-repeat;
   background-image: url("../images/mars.jpeg");
   background-position: center;
   background-attachment: fixed;
@@ -147,7 +148,7 @@ li:nth-child(odd) {
 
 
 
-/* @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
   #start-screen {
     transform: scale(1.1) translate(-50%, -50%);
     font-size: 0.8em;
@@ -155,4 +156,15 @@ li:nth-child(odd) {
     margin: 2%;
     min-width: 330px;
   }
-} */
+
+  body {
+    /* font-size: 120%; */
+    background-image: url("../images/mars-phone.jpg");
+
+    background-position: center;
+    background-attachment: fixed;
+    background-size: 1300px
+    
+  }
+  
+}
