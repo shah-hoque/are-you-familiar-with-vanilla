@@ -3,25 +3,17 @@ body {
   font-family: 'Do Hyeon', sans-serif;
   font-size: 120%;
   background-color: #000000;
-  background-image: url("/assets/mars-1.jpeg");
+  background-image: url("../images/mars.jpeg");
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
-
-  
 }
 
-
-
 .wrapper {
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-
-
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .timer {
@@ -31,19 +23,14 @@ body {
   display: none;
 }
 
-
-
 p {
   color: white;
 }
 
 h1 {
   color: white;
-
 }
 /* GLOBAL ELEMENTS (end)-----------------------------*/
-
-
 
 
 /* START PAGE -----------------------------------*/
@@ -55,6 +42,7 @@ h1 {
   transform: translate(-50%, -50%);
   text-align: center;
   min-width: 330px;
+ 
 }
 
 #title {
@@ -72,7 +60,7 @@ h1 {
     color: #f0db4f;
 }
 
-#start-button {
+#start-button, #scores-button {
   display: inline-block;
   margin: 5px;
   cursor: pointer;
@@ -91,18 +79,17 @@ h1 {
   color: rgb(7, 7, 7);
 }
 
+#scores-button:hover {
+  background-color: #f0db4f;
+  color: rgb(7, 7, 7);
+}
+
 .scores {
   position: absolute;
   top: 15px;
   left: 20px;
-  background-color: #ffffff;
-  color: rgb(0, 0, 0);
+  /* transform: scale(0.9) translate(-10%, -10%); */
 }
-
-
-
-
-
 /* START PAGE (end) ---------------------------------*/
 
 
@@ -110,15 +97,9 @@ h1 {
 
 
 
-a {
-  color: #563d7c;
-  text-decoration: none;
-  transition: color 0.1s;
-}
 
-a:hover {
-  color: #8570a5;
-}
+
+
 
 .choices button {
   display: block;
