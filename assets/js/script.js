@@ -3,12 +3,26 @@
 // show the timer and start the timer for 1 min
 
 
-// LOADING FIRST QUESTION -----------------------------------
+
+// EVENT STARTER -----------------------------------
+
+// REMOVING START PAGE
 $('#start-button').click(function() {
     $('#start-screen').fadeOut()
+    $('.scores').fadeOut()
     $('.timer').fadeIn();
-})
-// LOADING FIRST QUESTION (end) -----------------------------------
+
+// CHANGE BACKGROUND IMAGE
+    var imageUrl = "assets/images/stars.jpeg";
+    $('body').css("background-image", "url(" + imageUrl + ")").fadeIn()
+
+
+});
+   
+
+
+
+
 
 
 

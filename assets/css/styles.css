@@ -17,20 +17,7 @@ body {
   overflow: hidden;
 }
 
-.timer {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  display: none;
-}
 
-p {
-  color: white;
-}
-
-h1 {
-  color: white;
-}
 /* GLOBAL ELEMENTS (end)-----------------------------*/
 
 
@@ -43,11 +30,14 @@ h1 {
   transform: translate(-50%, -50%);
   text-align: center;
   min-width: 330px;
+  color: #ffffff;
  
 }
 
 #title {
   font-size: 40px;
+  color: white;
+
 }
 
 #title-span-h1 {
@@ -61,7 +51,7 @@ h1 {
     color: #f0db4f;
 }
 
-#start-button, #scores-button {
+#start-button, #scores-button, .timer {
   display: inline-block;
   margin: 5px;
   cursor: pointer;
@@ -91,15 +81,74 @@ h1 {
   left: 20px;
   /* transform: scale(0.9) translate(-10%, -10%); */
 }
-/* START PAGE (end) ---------------------------------*/
+/* START PAGE (end) --------------------------------- */
+
+/* QUESTIONS PAGE --------------------------------- */
+.timer {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  display: none;
+}
+
+
+
+
+/* QUESTIONS PAGE (end) --------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+  /* #start-screen {
+    transform: scale(1.1) translate(-50%, -50%);
+    font-size: 0.8em;
+    padding: 5%;
+    margin: 2%;
+    min-width: 330px;
+  } */
+
+  body {
+    font-size: 110%;
+    background-image: url("../images/mars-phone.jpg");
+
+    background-position: center;
+    background-attachment: fixed;
+    background-size: 1000px
+    
+  }
+
+  #title {
+    font-size: 20px;
+  }
+  
+  #title-span-h1 {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 45px;
+    color: #f0db4f;
+  }
+  
+}
+
+
 
 
 /* old */
-
-
-
-
-
 
 
 .choices button {
@@ -144,37 +193,4 @@ li:nth-child(odd) {
   padding-top: 10px;
   color: gray;
   border-top: 2px solid #ccc;
-}
-
-
-
-@media only screen and (max-width: 600px) {
-  /* #start-screen {
-    transform: scale(1.1) translate(-50%, -50%);
-    font-size: 0.8em;
-    padding: 5%;
-    margin: 2%;
-    min-width: 330px;
-  } */
-
-  body {
-    font-size: 110%;
-    background-image: url("../images/mars-phone.jpg");
-
-    background-position: center;
-    background-attachment: fixed;
-    background-size: 1000px
-    
-  }
-
-  #title {
-    font-size: 20px;
-  }
-  
-  #title-span-h1 {
-    font-family: 'Do Hyeon', sans-serif;
-    font-size: 45px;
-    color: #f0db4f;
-  }
-  
 }
