@@ -123,13 +123,15 @@ body {
     min-width: 330px;
   } */
 
+
+
   body {
     font-size: 110%;
     background-image: url("../images/mars-phone.jpg");
 
     background-position: center;
     background-attachment: fixed;
-    background-size: 1000px
+    /* background-size: 1000px - remove if not needed */
     
   }
 

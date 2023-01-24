@@ -1,8 +1,7 @@
-// when the button is started hide the start page
 
-// show the timer and start the timer for 1 min
-
-
+if (window.matchMedia("(max-width: 600px)").matches) {
+    // do something when the screen width is less than or equal to 600px
+}
 
 // EVENT STARTER -----------------------------------
 
@@ -16,13 +15,32 @@ $('#start-button').click(function() {
     var imageUrl = "assets/images/stars.jpeg";
     $('body').css("background-image", "url(" + imageUrl + ")").fadeIn()
 
+    if (window.matchMedia("(max-width: 600px)").matches) {
+        $('body').css("background-image", "url(" + imageUrl + ")")
+    }
+
+
+countdown();
+
 
 });
-   
 
 
 
 
+// COUNTDOWN TIMER
+function countdown() {
+    var clockEnds = 60;
+    var sec = clockEnds;
+    var timer = setInterval(() => {
+        if (sec > 0) {
+            $('#time').html(sec + ' sec');
+            sec--;
+        } else {
+            clearInterval(timer);
+        }
+    }, 1000);
+}
 
 
 
