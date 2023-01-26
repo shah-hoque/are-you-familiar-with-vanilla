@@ -25,22 +25,39 @@ questions()
 
 // EVENT L ON THE LIST ITEMS -----------------------------------
 $('#choices').on('click', 'li', function() {
-    // var clickedItemValue = $(this).text();
     questionCheck(this);
+
 });
+// EVENT L ON THE LIST ITEMS (end) -----------------------------------
 
 
 
 
+// CURRENT QUESTION
+var currentQNum = 0
 
 
+// QUESTIONS FOR USERS
+function questions() {
+    
+    // Parse .question (child to questionData) into questionTitle
+    $("#question-title").html(questionData[currentQNum].question);
+    
+    $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[0] + "</li>");
+    $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[1] + "</li>");
+    $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[2] + "</li>");
+    $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[3] + "</li>");
+    
+}
 
+let clockStart = 60;
+let sec = clockStart;
+let timer;
 
-// COUNTDOWN TIMER
+// START THE COUNTDOWN
 function countdown() {
-    var clockEnds = 60;
-    var sec = clockEnds;
-    var timer = setInterval(() => {
+    sec = clockStart;
+    timer = setInterval(() => {
         if (sec > 0) {
             $('#time').html(sec + ' sec');
             sec--;
@@ -50,42 +67,39 @@ function countdown() {
     }, 1000);
 }
 
-// CURRENT QUESTIONS
-var currentQNum = 0
-
-
-// QUESTIONS FOR USERS
-function questions() {
-
-    // Parse .question (child to questionData) into questionTitle
-    $("#question-title").html(questionData[currentQNum].question);
-
-    $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[0] + "</li>");
-    $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[1] + "</li>");
-    $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[2] + "</li>");
-    $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[3] + "</li>");
-
+// REDUCE THE COUNTDOWN ON WRONG ANSWER
+function reduceCountdown() {
+    if (sec > 10) { // remove > after
+        sec -= 10;
+    }
 }
+
+// CHANGE THE QUESTION
+function changeQ() {
+    if (currentQNum != 9) {
+        currentQNum++
+    } 
+}
+
 
 // QUESTION VALIDATOR
 function questionCheck(listItem) {
-
+    
     var clickedItemValue = $(listItem).text();
-
+    
     console.log("Answer should match: " + questionData[currentQNum].answer)
-
-    // COLOUR THE Q GREEN IF CORRECT, ELSE: RED
+    
     if (clickedItemValue == questionData[currentQNum].answer) {
-        $(listItem).css("background-color", "#32de84");
+        $(listItem).css("background-color", "#32de84"); // colour the li green if correct
+        // changeQ()
     } else {
         $(listItem).css("background-color", "red");
-
+        // changeQ()
+        reduceCountdown()
+        
     }
-
-
-
-
 }
+
 
 
 
