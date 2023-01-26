@@ -20,6 +20,18 @@ countdown();
 
 questions()
 });
+// EVENT L ON THE START BUTTON (end) -----------------------------------
+
+
+// EVENT L ON THE LIST ITEMS -----------------------------------
+$('#choices').on('click', 'li', function() {
+    // var clickedItemValue = $(this).text();
+    questionCheck(this);
+});
+
+
+
+
 
 
 
@@ -39,13 +51,11 @@ function countdown() {
 }
 
 // CURRENT QUESTIONS
-var currentQNum = 2
+var currentQNum = 0
 
 
 // QUESTIONS FOR USERS
 function questions() {
-
-    console.log(questionData[currentQNum])
 
     // Parse .question (child to questionData) into questionTitle
     $("#question-title").html(questionData[currentQNum].question);
@@ -55,9 +65,30 @@ function questions() {
     $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[2] + "</li>");
     $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[3] + "</li>");
 
+}
+
+// QUESTION VALIDATOR
+function questionCheck(listItem) {
+
+    var clickedItemValue = $(listItem).text();
+
+    console.log("Answer should match: " + questionData[currentQNum].answer)
+
+    // COLOUR THE Q GREEN IF CORRECT, ELSE: RED
+    if (clickedItemValue == questionData[currentQNum].answer) {
+        $(listItem).css("background-color", "#32de84");
+    } else {
+        $(listItem).css("background-color", "red");
+
+    }
+
+
 
 
 }
+
+
+
 
 // DATA SOURCE
 var questionData = [
@@ -70,13 +101,13 @@ var questionData = [
     {
         question: "What is the difference between == and === ?",
         possibleAnswers: ["== compares values, === compares values and types", "== compares types, === compares values", "== compares values and types, === compares values", "There is no difference between the two"],
-        answer: "variable = undefined",
+        answer: "== compares values, === compares values and types",
     },
 
     {
         question: "How do you set a variable to undefined?",
         possibleAnswers: ["variable = null", "variable = undefined", 'variable = ""', "variable = NaN"],
-        answer: "x++",
+        answer: "variable = undefined",
     },
 
     {
