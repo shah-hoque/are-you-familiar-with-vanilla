@@ -83,7 +83,21 @@ body {
 }
 /* START PAGE (end) --------------------------------- */
 
+
 /* QUESTIONS PAGE --------------------------------- */
+#questions {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  min-width: 400px;
+}
+
+.hide {
+  display: none;
+}
+
 .timer {
   position: absolute;
   top: 15px;
@@ -91,6 +105,31 @@ body {
   display: none;
 }
 
+
+h2 {
+  color: rgb(255, 255, 255);
+}
+
+
+
+
+li {
+  margin: 10px;
+  cursor: pointer;
+  font-size: 100%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 0;
+  color: rgb(0, 0, 0);
+  border: 0;
+  transition: background-color 0.1s;
+  font-family: 'Do Hyeon', sans-serif;
+}
+
+#choices ul {
+  margin: 0;
+  padding: 0;
+}
 
 
 
@@ -115,16 +154,6 @@ body {
 
 
 @media only screen and (max-width: 600px) {
-  /* #start-screen {
-    transform: scale(1.1) translate(-50%, -50%);
-    font-size: 0.8em;
-    padding: 5%;
-    margin: 2%;
-    min-width: 330px;
-  } */
-
-
-
   body {
     font-size: 110%;
     background-image: url("../images/mars-phone.jpg");
@@ -150,41 +179,16 @@ body {
 
 
 
-/* old */
-
-
-.choices button {
-  display: block;
-}
-
-input[type="text"] {
-  font-size: 100%;
-}
-
-ol {
-  padding-left: 0px;
-  max-height: 400px;
-  overflow: auto;
-}
-
-li {
-  padding: 5px;
-  list-style: decimal inside none;
-}
-
-li:nth-child(odd) {
-  background-color: #4e445c;
-}
+/* old ---------------------------------*/
 
 
 
-.hide {
-  display: none;
-}
 
-.start {
-  text-align: center;
-}
+
+
+
+
+
 
 
 

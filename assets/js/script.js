@@ -1,9 +1,6 @@
 
-if (window.matchMedia("(max-width: 600px)").matches) {
-    // do something when the screen width is less than or equal to 600px
-}
 
-// EVENT STARTER -----------------------------------
+// EVENT L ON THE START BUTTON -----------------------------------
 
 // REMOVING START PAGE
 $('#start-button').click(function() {
@@ -15,14 +12,13 @@ $('#start-button').click(function() {
     var imageUrl = "assets/images/stars.jpeg";
     $('body').css("background-image", "url(" + imageUrl + ")").fadeIn()
 
-    if (window.matchMedia("(max-width: 600px)").matches) {
-        $('body').css("background-image", "url(" + imageUrl + ")")
-    }
+// UNHIDE QUESTION DIV
+$('#questions').show()
 
-
+// START THE COUNTDOWN
 countdown();
 
-
+questions()
 });
 
 
@@ -42,21 +38,39 @@ function countdown() {
     }, 1000);
 }
 
+// CURRENT QUESTIONS
+var currentQNum = 0
 
 
+// QUESTIONS FOR USERS
+function questions() {
 
+    console.log(questionData[currentQNum])
 
+    // Parse .question (child to questionData) into questionTitle
+    $("#question-title").html(questionData[currentQNum].question);
 
-
-
-// DATA SOURCE
-var questions = {
-    1: {
-        question: "What is 5 + 5?",
-        possibleAnswers: ["pa1", "pa2", "pa3"],
-        answer: "pa2",
-    }
+    $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[0] + "</li>");
+    $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[1] + "</li>");
+    $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[2] + "</li>");
+    $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[3] + "</li>");
 
 
 
 }
+
+// DATA SOURCE
+var questionData = [
+    {
+        question: "How can you check if a variable is an array in JavaScript?",
+        possibleAnswers: ["variable.isArray()", "Array.isArray(variable)", "variable instanceof Array", "typeof variable === 'array'"],
+        answer: "Array.isArray(variable)",
+    },
+
+    {
+        question: "What is 10 + 10?",
+        possibleAnswers: ["ok1", "ok2", "ok3"],
+        answer: "ok3",
+    }
+
+]
