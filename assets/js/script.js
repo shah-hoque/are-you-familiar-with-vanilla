@@ -1,24 +1,23 @@
-
-
 // EVENT L ON THE START BUTTON -----------------------------------
-
-// REMOVING START PAGE
 $('#start-button').click(function() {
+
+// Removing the start screen
     $('#start-screen').fadeOut()
     $('.scores').fadeOut()
     $('.timer').fadeIn();
 
-// CHANGE BACKGROUND IMAGE
+// Change background image
     var imageUrl = "assets/images/stars.jpeg";
     $('body').css("background-image", "url(" + imageUrl + ")").fadeIn()
 
-// UNHIDE QUESTION DIV
-$('#questions').show()
+// Unhide div
+    $('#questions').show()
 
-// START THE COUNTDOWN
-countdown();
+// Start the countdown
+    countdown();    
 
-questions()
+// Create the 1st question
+    newQ()
 });
 // EVENT L ON THE START BUTTON (end) -----------------------------------
 
@@ -26,35 +25,31 @@ questions()
 // EVENT L ON THE LIST ITEMS -----------------------------------
 $('#choices').on('click', 'li', function() {
     questionCheck(this);
-
 });
 // EVENT L ON THE LIST ITEMS (end) -----------------------------------
 
 
-
-
-// CURRENT QUESTION
+// TRACK THE CURRENT QUESTION
 var currentQNum = 0
 
 
-// QUESTIONS FOR USERS
-function questions() {
-    
-    // Parse .question (child to questionData) into questionTitle
+// FUNC) CREATES A QUESTION
+function newQ() {
     $("#question-title").html(questionData[currentQNum].question);
-    
+
+    $("#choices ul").empty();
     $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[0] + "</li>");
     $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[1] + "</li>");
     $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[2] + "</li>");
     $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[3] + "</li>");
-    
 }
+
 
 let clockStart = 60;
 let sec = clockStart;
 let timer;
 
-// START THE COUNTDOWN
+// FUNC) START THE COUNTDOWN
 function countdown() {
     sec = clockStart;
     timer = setInterval(() => {
@@ -67,14 +62,16 @@ function countdown() {
     }, 1000);
 }
 
-// REDUCE THE COUNTDOWN ON WRONG ANSWER
+
+// FUNC) REDUCE THE COUNTDOWN ON WRONG ANSWER
 function reduceCountdown() {
-    if (sec > 10) { // remove > after
+    if (sec > 10) { 
         sec -= 10;
     }
 }
 
-// CHANGE THE QUESTION
+
+// FUNC) CHANGE THE QUESTION
 function changeQ() {
     if (currentQNum != 9) {
         currentQNum++
@@ -82,29 +79,38 @@ function changeQ() {
 }
 
 
-// QUESTION VALIDATOR
+// FUNC) REMOVE QUESTION
+function removeQ() {
+    $("#choices li").empty();
+}
+
+
+// FUNC) CHECK QUESTION RESPONSE
 function questionCheck(listItem) {
-    
+
     var clickedItemValue = $(listItem).text();
-    
-    console.log("Answer should match: " + questionData[currentQNum].answer)
-    
+    // console.log("Answer should match: " + questionData[currentQNum].answer)
+
     if (clickedItemValue == questionData[currentQNum].answer) {
-        $(listItem).css("background-color", "#32de84"); // colour the li green if correct
-        // changeQ()
+        $(listItem).css("background-color", "#32de84");
+        setTimeout(function(){
+            changeQ()
+            removeQ()
+            newQ()
+        }, 500); // delay execution for half a second
     } else {
         $(listItem).css("background-color", "red");
-        // changeQ()
-        reduceCountdown()
-        
+        setTimeout(function(){
+            changeQ()
+            removeQ() 
+            reduceCountdown()
+            newQ()
+        }, 500);
     }
 }
 
 
-
-
-
-// DATA SOURCE
+// DATA SOURCE OF QUESTIONS
 var questionData = [
     {
         question: "How can you check if a variable is an array?",
@@ -114,7 +120,7 @@ var questionData = [
 
     {
         question: "What is the difference between == and === ?",
-        possibleAnswers: ["== compares values, === compares values and types", "== compares types, === compares values", "== compares values and types, === compares values", "There is no difference between the two"],
+        possibleAnswers: ["== compares values, === compares values & types", "== compares types, === compares values", "== compares values & types, === compares values", "There is no difference between the two"],
         answer: "== compares values, === compares values and types",
     },
 
@@ -125,9 +131,9 @@ var questionData = [
     },
 
     {
-        question: "What is the difference between var, let, and const?",
-        possibleAnswers: ["var is global scope, let is block scope, const is constant", "var is function scope, let is block scope, const is constant", "var is function scope, let is global scope, const is constant", "var is block scope, let is function scope, const is constant"],
-        answer: "var is function scope, let is block scope, const is constant",
+        question: "How can you check if an element exists in an array?",
+        possibleAnswers: ["array.contains(element)", "array.includes(element)", "array.indexOf(element) > -1", "array.find(element)"],
+        answer: "array.includes(element)",
     },
 
     {
@@ -156,7 +162,7 @@ var questionData = [
 
     {
         question: "How can you reverse the order of an array?",
-        possibleAnswers: ["array.reverse()", "array.flip()", "array.invert()", "There is no built-in function to reverse an array in JavaScript"],
+        possibleAnswers: ["array.reverse()", "array.flip()", "array.invert()", "No built-in function is available"],
         answer: "array.reverse()",
     },
 
