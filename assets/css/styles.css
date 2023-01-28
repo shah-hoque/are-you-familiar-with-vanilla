@@ -20,6 +20,19 @@ body {
   overflow: hidden;
 }
 
+#start-screen, #questions, #end-screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+ 
+}
+
+.hide {
+  display: none;
+}
+
 
 /* GLOBAL ELEMENTS (end)-----------------------------*/
 
@@ -27,14 +40,13 @@ body {
 /* START PAGE -----------------------------------*/
 
 #start-screen {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
+  text-align: center; */
   min-width: 330px;
   color: #ffffff;
- 
 }
 
 #title {
@@ -89,17 +101,14 @@ body {
 
 /* QUESTIONS PAGE --------------------------------- */
 #questions {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
+  text-align: center; */
   min-width: 400px;
 }
 
-.hide {
-  display: none;
-}
 
 .timer {
   position: absolute;
@@ -139,7 +148,12 @@ li {
 /* QUESTIONS PAGE (end) --------------------------------- */
 
 
+/* WIN PAGE --------------------------------- */
 
+
+
+
+/* WIN PAGE (end) --------------------------------- */
 
 
 

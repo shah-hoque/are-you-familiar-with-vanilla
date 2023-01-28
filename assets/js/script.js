@@ -1,4 +1,6 @@
-// EVENT L ON THE START BUTTON -----------------------------------
+// EVENT LISTENERS -----------------------------------
+
+// EVENT L ON THE START BUTTON
 $('#start-button').click(function() {
 
 // Removing the start screen
@@ -19,14 +21,47 @@ $('#start-button').click(function() {
 // Create the 1st question
     newQ()
 });
-// EVENT L ON THE START BUTTON (end) -----------------------------------
 
 
-// EVENT L ON THE LIST ITEMS -----------------------------------
+// EVENT L ON THE LIST ITEMS
 $('#choices').on('click', 'li', function() {
     questionCheck(this);
 });
-// EVENT L ON THE LIST ITEMS (end) -----------------------------------
+
+// EVENT L ON THE TIME
+
+// EVENT LISTENERS (end) -----------------------------------
+
+// TIMER STATUS
+// function timerStatus() {
+//     if 
+//     $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[0] + "</li>");
+//     $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[1] + "</li>");
+//     $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[2] + "</li>");
+//     $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[3] + "</li>");
+// }
+
+// (currentQNum == 9 && $('#time').html() > 0)
+
+// function test1() {
+//     if ($('#timer').val() == 55) {
+
+//     }
+// }
+
+// LAST QUESTION CHECK
+function lastQCheck() {
+        if ($('#question-title').html() === questionData[9].question && sec >= 0) {
+
+        console.log("same");
+
+        $("#question-title").hide()
+        $("#choices").hide()
+        $(".timer").hide()
+
+        $("#end-screen").show()
+    }
+}
 
 
 // TRACK THE CURRENT QUESTION
@@ -36,6 +71,7 @@ var currentQNum = 0
 // FUNC) CREATES A QUESTION
 function newQ() {
     $("#question-title").html(questionData[currentQNum].question);
+    // console.log($("#question-title").html())
 
     $("#choices ul").empty();
     $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[0] + "</li>");
@@ -53,10 +89,10 @@ let timer;
 function countdown() {
     sec = clockStart;
     timer = setInterval(() => {
-        if (sec > 0) {
+        if (sec >= 0) {
             $('#time').html(sec + ' sec');
             sec--;
-        } else {
+        } else { // add another if
             clearInterval(timer);
         }
     }, 1000);
@@ -65,9 +101,9 @@ function countdown() {
 
 // FUNC) REDUCE THE COUNTDOWN ON WRONG ANSWER
 function reduceCountdown() {
-    if (sec > 10) { 
+    // if (sec > 10) { 
         sec -= 10;
-    }
+    // }
 }
 
 
@@ -94,6 +130,7 @@ function questionCheck(listItem) {
     if (clickedItemValue == questionData[currentQNum].answer) {
         $(listItem).css("background-color", "#32de84");
         setTimeout(function(){
+            lastQCheck()
             changeQ()
             removeQ()
             newQ()
@@ -101,12 +138,34 @@ function questionCheck(listItem) {
     } else {
         $(listItem).css("background-color", "red");
         setTimeout(function(){
+            lastQCheck()
             changeQ()
             removeQ() 
             reduceCountdown()
             newQ()
         }, 500);
     }
+}
+
+
+
+
+
+// FUNC) USER WON
+function userWon() {
+    // this will execute if last q is clicked and time is > than 0
+    // display winner msg with a link to highscores.html
+    console.log("you won")
+    
+}
+
+// FUNC) USER LOST
+function userLost() {
+    // this will execute if time is <= 0
+    //  display looser msg
+    console.log("you lost")
+
+
 }
 
 
@@ -121,7 +180,7 @@ var questionData = [
     {
         question: "What is the difference between == and === ?",
         possibleAnswers: ["== compares values, === compares values & types", "== compares types, === compares values", "== compares values & types, === compares values", "There is no difference between the two"],
-        answer: "== compares values, === compares values and types",
+        answer: "== compares values, === compares values & types",
     },
 
     {
