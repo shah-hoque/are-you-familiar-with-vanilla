@@ -20,7 +20,7 @@ body {
   overflow: hidden;
 }
 
-#start-screen, #questions, #end-screen {
+#start-screen, #questions-screen, #lost-screen, #won-screen {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -100,7 +100,7 @@ body {
 
 
 /* QUESTIONS PAGE --------------------------------- */
-#questions {
+#questions-screen {
   /* position: absolute;
   top: 50%;
   left: 50%;
@@ -156,6 +156,23 @@ li {
 /* WIN PAGE (end) --------------------------------- */
 
 
+/* LOST PAGE --------------------------------- */
+#lost-screen p {
+  color: white;
+  font-size: x-large;
+}
+
+#lost-screen span {
+  color: red;
+}
+
+#lost-screen h1 {
+  color: white;
+}
+
+
+
+/* LOST PAGE (end) --------------------------------- */
 
 
 

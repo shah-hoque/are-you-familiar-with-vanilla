@@ -13,7 +13,7 @@ $('#start-button').click(function() {
     $('body').css("background-image", "url(" + imageUrl + ")").fadeIn()
 
 // Unhide div
-    $('#questions').show()
+    $('#questions-screen').show()
 
 // Start the countdown
     countdown();    
@@ -28,38 +28,24 @@ $('#choices').on('click', 'li', function() {
     questionCheck(this);
 });
 
-// EVENT L ON THE TIME
+
+// EVENT L ON THE TIME AT VAL 0
+$('#time').on("countdown-finished", function() {
+    userLost();
+  });
 
 // EVENT LISTENERS (end) -----------------------------------
 
-// TIMER STATUS
-// function timerStatus() {
-//     if 
-//     $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[0] + "</li>");
-//     $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[1] + "</li>");
-//     $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[2] + "</li>");
-//     $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[3] + "</li>");
-// }
 
-// (currentQNum == 9 && $('#time').html() > 0)
-
-// function test1() {
-//     if ($('#timer').val() == 55) {
-
-//     }
-// }
 
 // LAST QUESTION CHECK
 function lastQCheck() {
-        if ($('#question-title').html() === questionData[9].question && sec >= 0) {
+    if ($('#question-title').html() === questionData[9].question && sec >= 0) {
 
         console.log("same");
 
-        $("#question-title").hide()
-        $("#choices").hide()
-        $(".timer").hide()
+        userWon()
 
-        $("#end-screen").show()
     }
 }
 
@@ -92,8 +78,10 @@ function countdown() {
         if (sec >= 0) {
             $('#time').html(sec + ' sec');
             sec--;
-        } else { // add another if
+        } else { 
             clearInterval(timer);
+            $('#time').trigger("countdown-finished");
+
         }
     }, 1000);
 }
@@ -101,9 +89,7 @@ function countdown() {
 
 // FUNC) REDUCE THE COUNTDOWN ON WRONG ANSWER
 function reduceCountdown() {
-    // if (sec > 10) { 
         sec -= 10;
-    // }
 }
 
 
@@ -156,6 +142,12 @@ function userWon() {
     // this will execute if last q is clicked and time is > than 0
     // display winner msg with a link to highscores.html
     console.log("you won")
+
+    $("#question-title").hide()
+        $("#choices").hide()
+        $(".timer").hide()
+
+        $("#won-screen").show()
     
 }
 
@@ -164,6 +156,25 @@ function userLost() {
     // this will execute if time is <= 0
     //  display looser msg
     console.log("you lost")
+
+    $("#question-title").hide()
+        $("#choices").hide()
+        $(".timer").hide()
+
+        $("#lost-screen").show()
+        $("#lost-title").html("You <span>failed</span> to beat the timer!" );
+        $("#lost-screen").append("<p>The search for the hero continues...</p>");
+
+
+
+
+
+        setTimeout(function(){
+            location.reload(true)
+        }, 6000);
+
+
+
 
 
 }
