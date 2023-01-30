@@ -1,6 +1,5 @@
 // EVENT LISTENERS -----------------------------------
 
-
 // EVENT L ON THE START BUTTON
 $('#start-button').click(function() {
 
@@ -33,17 +32,19 @@ $('#choices').on('click', 'li', function() {
 // EVENT L ON THE TIME AT VAL 0
 $('#time').on("countdown-finished", function() {
     userLost();
-  });
+});
+
 
 // EVENT L ON WON SUBMIT BUTTON
 $('#input-container #submit').on('click', function() {
 
-    // get the existing key:pair to append to it
+    // get the existing local storage key:pair to append to it
     var existingResults = localStorage.getItem("js-quiz-results");
 
-    // if existingResults != empty add existingResults, else create a new array
+    // if existingResults != empty, add existingResults, else create a new array
     var resultsArray = existingResults ? JSON.parse(existingResults) : [];
   
+    // object that will be parsed into resultsArray
     var recordResult = {
       name: $("#first-name").val(),
       completedIn: TimeCompletedIn
@@ -54,71 +55,64 @@ $('#input-container #submit').on('click', function() {
     // this will update 'js-quiz-results' with the updated 'resultsArray'
     localStorage.setItem("js-quiz-results", JSON.stringify(resultsArray));
 
+    // change page to highscores.html
     $(location).attr('href', 'highscores.html');
-
-  });
-
+});
 
 
 if (window.location.pathname == "/highscores.html") {
-    
     $('#clear').on('click', function() {
         localStorage.removeItem("js-quiz-results");
         location.reload(true);
-
-
-
-
-
     }
-
-)}
-
-
+)};
 // EVENT LISTENERS (end) -----------------------------------
 
 
-
 // POPULATE RESULTS FOR highscores.html -----------------------------------
-
-
-
-
-
-// POPULATE RESULTS FOR highscores.html (end) -----------------------------------
-
 $(document).ready(function() {
+
+    // .getItem gets the result, JSON.parse changes it from a string to an object
     var results = JSON.parse(localStorage.getItem("js-quiz-results"));
 
+    // 1st 'results' checks if it's truthy (e.g has a value (boolean check)), the 2nd checks the len
     if (results && results.length >= 1) {
+        // show the title
         $('#hide').show();
+        // hide the no results screen text
         $('#results-screen #no-results').hide();
-    
     }
   
-    // Sort the results based on completedIn
+    // sorts the results in ascending order based on completedIn
     results.sort(function(a, b) {
       return a.completedIn - b.completedIn;
     });
   
-    // Populate the ordered list with the sorted results
+    // populates the ordered list with the sorted results
     var ol = $("#results-list ol");
     for (var i = 0; i < results.length; i++) {
       var result = results[i];
-      var li = $("<li>" + result.name + " won in " + result.completedIn + " secs</li>");
+      var li = $("<li>" + result.name + " in " + result.completedIn + " secs</li>");
+
       ol.append(li);
     }
-  });
-  
+});
+// POPULATE RESULTS FOR highscores.html (end) -----------------------------------
 
 
-
-
-
-var TimeLeft
+// GLOBAL VARS -----------------------------------
+var TimeLeft // for lastQCheck()
 var TimeCompletedIn
 
-// LAST QUESTION CHECK
+var currentQNum = 0 // to track the current question
+
+let clockStart = 60; // for countdown()
+let sec = clockStart;
+let timer;
+// GLOBAL VARS (end) -----------------------------------
+
+
+// FUNC) LAST QUESTION CHECK
 function lastQCheck() {
     if ($('#question-title').html() === questionData[9].question && sec >= 0) {
 
@@ -129,16 +123,9 @@ function lastQCheck() {
 
         $('#final-score').html(TimeCompletedIn)
 
-        console.log(TimeCompletedIn)
-
         userWon()
-
     }
 }
-
-
-// TRACK THE CURRENT QUESTION
-var currentQNum = 0
 
 
 // FUNC) CREATES A QUESTION
@@ -153,13 +140,10 @@ function newQ() {
 }
 
 
-let clockStart = 60;
-let sec = clockStart;
-let timer;
-
 // FUNC) START THE COUNTDOWN
 function countdown() {
     sec = clockStart;
+
     timer = setInterval(() => {
         if (sec >= 0) {
             $('#time').html(sec + ' sec');
@@ -167,7 +151,6 @@ function countdown() {
         } else { 
             clearInterval(timer);
             $('#time').trigger("countdown-finished");
-
         }
     }, 1000);
 }
@@ -219,9 +202,6 @@ function questionCheck(listItem) {
 }
 
 
-
-
-
 // FUNC) USER WON
 function userWon() {
 
@@ -235,6 +215,7 @@ function userWon() {
         $("#won-screen").show()
 }
 
+
 // FUNC) USER LOST
 function userLost() {
     $("#question-title").hide()
@@ -243,16 +224,11 @@ function userLost() {
 
         $("#lost-screen").show()
         $("#lost-title").html("You <span>failed</span> to beat the timer!" );
-        $("#lost-screen").append("<p>The search for the hero continues...</p>");
+        $("#lost-screen").append("<p>The search for the heroes continues...</p>");
 
         setTimeout(function(){
             location.reload(true)
         }, 6000);
-
-
-
-
-
 }
 
 

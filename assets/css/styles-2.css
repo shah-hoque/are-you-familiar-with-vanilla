@@ -1,3 +1,5 @@
+/* ALL CSS HERE IS IN RELATION TO highscores.html */
+
 body {
     font-family: 'Do Hyeon', sans-serif;
     font-size: 120%;
@@ -7,14 +9,13 @@ body {
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
-  }
+}
 
 #home-page {
     position: absolute;
     top: 15px;
     left: 20px;
 }
-
 
 #clear {
     position: absolute;
@@ -34,51 +35,50 @@ body {
     border: 0;
     transition: background-color 0.1s;
     font-family: 'Do Hyeon', sans-serif;
-  }
+}
 
-  #results-screen {
+#results-screen {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-  }
+}
 
-  h1 {
+h1 {
     color: white;
-  }
+}
 
-  #results-screen {
+#results-screen {
     color: white;
 }
 
 #results-screen ol {
-      text-align: left;
-      font-size: 120%;
-
-  }
-
-  #hide {
-    display: none;
-  }
-
-  p {
+    text-align: left;
     font-size: 120%;
+}
 
-  }
+#hide {
+    display: none;
+}
+
+p {
+    font-size: 120%;
+}
 
 
-  @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
     body {
       font-size: 110%;  
       background-position: center;
       background-attachment: fixed;
-      
     }
 
     #results-screen {
         min-width: 80%;
-        
-        
     }
-  }
+
+    #clear {
+        display: none;
+    }
+}

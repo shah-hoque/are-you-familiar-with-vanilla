@@ -4,9 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Coding Quiz</title>
+    <title>JavaScript Quiz</title>
 
-  
     <!-- LIBRARIES & LINKS ---------------------------->
     <section>
       <!-- GOOGLE FONT -->
@@ -21,64 +20,53 @@
       <link rel="stylesheet" href="./assets/css/styles.css" />
     </section>
     <!-- LIBRARIES & LINKS (end) ---------------------------->
-
-
   </head>
 
   <body>
+  
+    <a href="highscores.html"> <button class="scores" id="scores-button">View Highscores</button> </a>
+    <div class="timer"> <span id="time">0</span> </div>
+
+
+    <div id="start-screen" class="start">
+
+      <h1 id="title">Are You Familiar With <span id="title-span-h1">Vanilla?</span> </h1>
+      <h3> <span id="sub-title-span-h3">THE ORDER OF THE CENTURY</span> </h3>
+      <p>Answer 10 JavaScript questions in 1 minute to plant the vanilla flag on Mars!</p>
+      <h3> <span id="sub-title-span-h3">ONE RULE</span> </h3>
+      <p>10 seconds will be deducted if you answer wrong</p>
       
-    <a href="highscores.html"><button class="scores" id="scores-button">View Highscores</button></a>
-
-    <div class="timer"><span id="time">0</span></div>
-
-
-      <div id="start-screen" class="start">
-
-          <h1 id="title">Are You Familiar With <span id="title-span-h1">Vanilla?</span></h1>
-
-          <h3><span id="sub-title-span-h3">THE ORDER OF THE CENTURY</span></h3>
-          <p>
-            Answer 10 JavaScript questions in 1 minute to plant the vanilla flag on Mars!
-          </p>
-          <h3><span id="sub-title-span-h3">ONE RULE</span></h3>
-          <p>
-            10 seconds will be deducted if you answer wrong
-          </p>
-          
-          <button id="start-button">Let me go forth</button>
-      </div>
+      <button id="start-button">Let me go forth</button>
+    </div>
 
 
-      <div id="questions-screen" class="hide">
+    <div id="questions-screen" class="hide">
 
-        <h2 id="question-title">Placeholder question title</h2>
-
-        <div id="choices" class="choices"> 
-          <ul></ul>
-        </div>
-
-      </div>
-
-      <div id="lost-screen" class="hide">
-
-        <h1 id="lost-title">Lost screen title</h1>
-
-      </div>
-
-
-
-      <div id="won-screen" class="hide">
-        <h1>You Won!</h1>
-        <p>Completed in <span id="final-score"></span> seconds</p>
-
-        <div id="input-container">
-          <input type="text" id="first-name" placeholder="Enter your name" max="10"/>
-          <button id="submit">Submit</button>
-        </div>
-        
+      <h2 id="question-title"> </h2>
+      <div id="choices" class="choices"> 
+        <ul></ul>
       </div>
 
     </div>
+
+
+    <div id="lost-screen" class="hide">
+      <h1 id="lost-title"></h1>
+
+    </div>
+
+
+    <div id="won-screen" class="hide">
+      <h1>You Won!</h1>
+      <p>Completed in <span id="final-score"> </span> seconds</p>
+
+      <div id="input-container">
+        <input type="text" id="first-name" placeholder="Enter your name" max="10"/>
+        <button id="submit">Submit</button>
+      </div>
+        
+    </div>
+
 
     <script src="./assets/js/script.js"></script>
 
