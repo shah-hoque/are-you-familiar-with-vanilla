@@ -34,15 +34,48 @@ $('#time').on("countdown-finished", function() {
     userLost();
   });
 
+// EVENT L ON WON SUBMIT BUTTON
+$('#input-container #submit').on('click', function() {
+
+    // get the existing key:pair to append to it
+    var existingResults = localStorage.getItem("js-quiz-results");
+
+    // if existingResults != empty add existingResults, else create a new array
+    var resultsArray = existingResults ? JSON.parse(existingResults) : [];
+  
+    var recordResult = {
+      name: $("#first-name").val(),
+      completedIn: TimeCompletedIn
+    };
+
+    resultsArray.push(recordResult);
+
+    // this will update 'js-quiz-results' with the updated 'resultsArray'
+    localStorage.setItem("js-quiz-results", JSON.stringify(resultsArray));
+
+    $(location).attr('href', 'highscores.html');
+
+  });
+  
+
+
 // EVENT LISTENERS (end) -----------------------------------
 
-
+var TimeLeft
+var TimeCompletedIn
 
 // LAST QUESTION CHECK
 function lastQCheck() {
     if ($('#question-title').html() === questionData[9].question && sec >= 0) {
 
-        console.log("same");
+        TimeLeft = sec + 1 // added 1 to make up for the sec lost while evaluating the condition
+        clearInterval(timer); // stop the timer
+
+        TimeCompletedIn = 60 - TimeLeft
+
+        $('#final-score').html(TimeCompletedIn)
+
+        console.log(TimeCompletedIn)
 
         userWon()
 
@@ -147,8 +180,10 @@ function userWon() {
         $("#choices").hide()
         $(".timer").hide()
 
+        var imageUrl = "assets/images/won.jpeg";
+        $('body').css("background-image", "url(" + imageUrl + ")").fadeIn()
+        
         $("#won-screen").show()
-    
 }
 
 // FUNC) USER LOST

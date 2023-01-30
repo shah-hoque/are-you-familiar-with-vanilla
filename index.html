@@ -69,15 +69,16 @@
 
 
       <div id="won-screen" class="hide">
-        <h2>All done!</h2>
-        <p>Your final score is <span id="final-score"></span>.</p>
-        <p>
-          Enter initials: <input type="text" id="initials" max="3" />
-          <button id="submit">Submit</button>
-        </p>
-      <!-- </div> -->
+        <h1>You Won!</h1>
+        <p>Completed in <span id="final-score"></span> seconds</p>
 
-      <div id="feedback" class="feedback hide"></div>
+        <div id="input-container">
+          <input type="text" id="first-name" placeholder="Enter your name" max="10"/>
+          <button id="submit">Submit</button>
+        </div>
+        
+      </div>
+
     </div>
 
     <script src="./assets/js/script.js"></script>

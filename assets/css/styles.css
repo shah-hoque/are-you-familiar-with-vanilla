@@ -20,7 +20,7 @@ body {
   overflow: hidden;
 }
 
-#start-screen, #questions-screen, #lost-screen, #won-screen {
+#start-screen, #questions-screen, #lost-screen {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -40,11 +40,6 @@ body {
 /* START PAGE -----------------------------------*/
 
 #start-screen {
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center; */
   min-width: 330px;
   color: #ffffff;
 }
@@ -62,7 +57,6 @@ body {
 }
 
 #sub-title-span-h3 {
-    /* background-color: #e1e0d9; */
     color: #f0db4f;
 }
 
@@ -101,11 +95,6 @@ body {
 
 /* QUESTIONS PAGE --------------------------------- */
 #questions-screen {
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center; */
   min-width: 400px;
 }
 
@@ -149,12 +138,67 @@ li {
 /* QUESTIONS PAGE (end) --------------------------------- */
 
 
-/* WIN PAGE --------------------------------- */
+/* WON PAGE --------------------------------- */
+
+#won-screen {
+  padding-top: 3%;
+  text-align: center;
 
 
+  
+}
+#won-screen h1 {
+  color: #f0db4f;
+  font-size: 300%;
+}
+
+#won-screen p {
+  color: white;
+  font-size: 120%;
+  padding-bottom: 1%;
+}
+
+#won-screen #input-title {
+  color: black;
+  font-size: 200%;
+}
 
 
-/* WIN PAGE (end) --------------------------------- */
+#input-container {
+  position: relative;
+}
+
+#won-screen button {
+  width: 100px;
+  height: 42px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 100%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 2px 10px;
+  color: rgb(0, 0, 0);
+  border: 0;
+  font-family: 'Do Hyeon', sans-serif;
+}
+
+#won-screen button:hover {
+  background-color: #f0db4f;
+
+}
+
+#won-screen input {
+  border: none;
+  border-radius: 5px;
+  height: 42px;
+  width : 300px;
+  font-size: 100%;
+  text-align: center;
+
+}
+
+
+/* WON PAGE (end) --------------------------------- */
 
 
 /* LOST PAGE --------------------------------- */
@@ -169,6 +213,7 @@ li {
 
 #lost-screen h1 {
   color: white;
+  
 }
 
 
@@ -207,6 +252,14 @@ li {
     font-family: 'Do Hyeon', sans-serif;
     font-size: 45px;
     color: #f0db4f;
+  }
+
+  #input-container {
+    margin-top: 10%;
+  }
+
+  #input-container button {
+    margin: 5%;
   }
   
 }
