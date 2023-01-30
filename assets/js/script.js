@@ -68,9 +68,43 @@ if (window.location.pathname == "/highscores.html") {
         var imageUrl = "assets/images/stars.jpeg";
         $('body').css("background-image", "url(" + imageUrl + ")")
     });
+
+    // add a l on the clear results
 }
 
 // EVENT LISTENERS (end) -----------------------------------
+
+
+
+// POPULATE RESULTS FOR highscores.html -----------------------------------
+
+
+
+
+
+// POPULATE RESULTS FOR highscores.html (end) -----------------------------------
+
+$(document).ready(function() {
+    var results = JSON.parse(localStorage.getItem("js-quiz-results"));
+  
+    // Sort the results based on completedIn
+    results.sort(function(a, b) {
+      return a.completedIn - b.completedIn;
+    });
+  
+    // Populate the ordered list with the sorted results
+    var ol = $("#results-list ol");
+    for (var i = 0; i < results.length; i++) {
+      var result = results[i];
+      var li = $("<li>" + result.name + " finished in " + result.completedIn + " secs</li>");
+      ol.append(li);
+    }
+  });
+  
+
+
+
+
 
 var TimeLeft
 var TimeCompletedIn
@@ -101,7 +135,6 @@ var currentQNum = 0
 // FUNC) CREATES A QUESTION
 function newQ() {
     $("#question-title").html(questionData[currentQNum].question);
-    // console.log($("#question-title").html())
 
     $("#choices ul").empty();
     $("#choices ul").append("<li>" + questionData[currentQNum].possibleAnswers[0] + "</li>");
@@ -155,7 +188,6 @@ function removeQ() {
 function questionCheck(listItem) {
 
     var clickedItemValue = $(listItem).text();
-    // console.log("Answer should match: " + questionData[currentQNum].answer)
 
     if (clickedItemValue == questionData[currentQNum].answer) {
         $(listItem).css("background-color", "#32de84");
@@ -183,9 +215,6 @@ function questionCheck(listItem) {
 
 // FUNC) USER WON
 function userWon() {
-    // this will execute if last q is clicked and time is > than 0
-    // display winner msg with a link to highscores.html
-    console.log("you won")
 
     $("#question-title").hide()
         $("#choices").hide()
@@ -199,10 +228,6 @@ function userWon() {
 
 // FUNC) USER LOST
 function userLost() {
-    // this will execute if time is <= 0
-    //  display looser msg
-    console.log("you lost")
-
     $("#question-title").hide()
         $("#choices").hide()
         $(".timer").hide()
@@ -210,10 +235,6 @@ function userLost() {
         $("#lost-screen").show()
         $("#lost-title").html("You <span>failed</span> to beat the timer!" );
         $("#lost-screen").append("<p>The search for the hero continues...</p>");
-
-
-
-
 
         setTimeout(function(){
             location.reload(true)
