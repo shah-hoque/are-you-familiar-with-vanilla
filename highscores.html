@@ -6,18 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Highscores</title>
 
-    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <!-- LIBRARIES & LINKS ---------------------------->
+    <section>
+      <!-- GOOGLE FONT -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+      <!-- jQuery -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+      <!-- LOCAL -->
+      <link rel="stylesheet" href="./assets/css/styles-2.css" />
+    </section>
+    <!-- LIBRARIES & LINKS (end) ---------------------------->
   </head>
 
   <body>
-    <div class="wrapper">
-      <h1>Highscores</h1>
+
+    <a href="index.html"><button id="home-page">Go Back</button></a>
+    <button id="clear">Clear results</button>
+
+    <div id="results-screen">
+      <h1>High scores</h1>
       <ol id="highscores"></ol>
 
-      <a href="index.html"><button>Go Back</button></a>
-      <button id="clear">Clear Highscores</button>
     </div>
 
-    <script src="./assets/js/scores.js"></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>

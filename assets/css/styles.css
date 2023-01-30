@@ -26,7 +26,6 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
- 
 }
 
 .hide {
@@ -88,7 +87,6 @@ body {
   position: absolute;
   top: 15px;
   left: 20px;
-  /* transform: scale(0.9) translate(-10%, -10%); */
 }
 /* START PAGE (end) --------------------------------- */
 
@@ -240,7 +238,6 @@ li {
 
     background-position: center;
     background-attachment: fixed;
-    /* background-size: 1000px - remove if not needed */
     
   }
 
@@ -276,15 +273,3 @@ li {
 
 
 
-
-
-
-
-.feedback {
-  font-style: italic;
-  font-size: 120%;
-  margin-top: 20px;
-  padding-top: 10px;
-  color: gray;
-  border-top: 2px solid #ccc;
-}

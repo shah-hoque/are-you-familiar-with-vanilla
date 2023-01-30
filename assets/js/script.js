@@ -1,5 +1,7 @@
 // EVENT LISTENERS -----------------------------------
 
+if (window.location.pathname === "/index.html") {
+
 // EVENT L ON THE START BUTTON
 $('#start-button').click(function() {
 
@@ -56,8 +58,17 @@ $('#input-container #submit').on('click', function() {
     $(location).attr('href', 'highscores.html');
 
   });
-  
 
+
+}
+
+if (window.location.pathname == "/highscores.html") {
+    
+    $('#scores-button').click, (function() {
+        var imageUrl = "assets/images/stars.jpeg";
+        $('body').css("background-image", "url(" + imageUrl + ")")
+    });
+}
 
 // EVENT LISTENERS (end) -----------------------------------
 

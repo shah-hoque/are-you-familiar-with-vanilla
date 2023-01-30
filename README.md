@@ -13,3 +13,4 @@ WHEN the game is over
 THEN I can save my initials and score 
 
 https://pixabay.com/illustrations/mars-planet-blue-night-space-5449280/
+https://www.vecteezy.com/vector-art/14320514-spacemen-with-flags-walking-on-mars-surface
