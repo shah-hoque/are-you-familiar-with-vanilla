@@ -1,6 +1,5 @@
 // EVENT LISTENERS -----------------------------------
 
-if (window.location.pathname === "/index.html") {
 
 // EVENT L ON THE START BUTTON
 $('#start-button').click(function() {
@@ -60,17 +59,21 @@ $('#input-container #submit').on('click', function() {
   });
 
 
-}
 
 if (window.location.pathname == "/highscores.html") {
     
-    $('#scores-button').click, (function() {
-        var imageUrl = "assets/images/stars.jpeg";
-        $('body').css("background-image", "url(" + imageUrl + ")")
-    });
+    $('#clear').on('click', function() {
+        localStorage.removeItem("js-quiz-results");
+        location.reload(true);
 
-    // add a l on the clear results
-}
+
+
+
+
+    }
+
+)}
+
 
 // EVENT LISTENERS (end) -----------------------------------
 
@@ -86,6 +89,12 @@ if (window.location.pathname == "/highscores.html") {
 
 $(document).ready(function() {
     var results = JSON.parse(localStorage.getItem("js-quiz-results"));
+
+    if (results && results.length >= 1) {
+        $('#hide').show();
+        $('#results-screen #no-results').hide();
+    
+    }
   
     // Sort the results based on completedIn
     results.sort(function(a, b) {
@@ -96,7 +105,7 @@ $(document).ready(function() {
     var ol = $("#results-list ol");
     for (var i = 0; i < results.length; i++) {
       var result = results[i];
-      var li = $("<li>" + result.name + " finished in " + result.completedIn + " secs</li>");
+      var li = $("<li>" + result.name + " won in " + result.completedIn + " secs</li>");
       ol.append(li);
     }
   });
