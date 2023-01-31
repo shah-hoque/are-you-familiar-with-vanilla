@@ -25,8 +25,8 @@ The application is responsive, therefore, it can be used on a range of devices.
 
 ## Application deployed
 
-![image](/)
-![image](/)
+![image of the website on a desktop](/assets/images/desktop-screenshot.png)
+![image of the website on an iPhone](/assets/images/iphone-screenshot.png)
 
 ## Credits
 Author: Shohidul Shah Hoque
