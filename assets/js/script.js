@@ -60,9 +60,9 @@ $('#input-container #submit').on('click', function() {
 });
 
 
-if (window.location.pathname == "/highscores.html") {
+if (window.location.pathname == "/highscores.html" || window.location.pathname == "/are-you-familiar-with-vanilla/highscores.html" ) {
     $('#clear').on('click', function() {
-        localStorage.clear("js-quiz-results");
+        localStorage.removeItem("js-quiz-results");
         location.reload(true);
     }
 )};
