@@ -62,7 +62,7 @@ $('#input-container #submit').on('click', function() {
 
 if (window.location.pathname == "/highscores.html") {
     $('#clear').on('click', function() {
-        localStorage.removeItem("js-quiz-results");
+        localStorage.clear("js-quiz-results");
         location.reload(true);
     }
 )};
